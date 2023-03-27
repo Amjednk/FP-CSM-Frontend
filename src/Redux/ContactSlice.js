@@ -18,7 +18,8 @@ async (
     };
     try {
     const { data } = await axios.post(
-        "http://localhost:5000/api/contact",
+        // "http://localhost:5000/api/contact",
+        "https://ak-csm.onrender.com/api/contact",
         contactDetails,
         config
     );
@@ -45,7 +46,8 @@ async (payload, { rejectWithValue, getState, dispatch }) => {
 
     try {
     const { data } = await axios.get(
-        "http://localhost:5000/api/allcontacts",
+        // "http://localhost:5000/api/contact",
+        "https://ak-csm.onrender.com/api/contact",
         config
     );
     return data;
@@ -66,7 +68,8 @@ async (id, { rejectWithValue, getState, dispatch }) => {
 
     try {
     const { data } = await axios.get(
-        `http://localhost:5000/api/contact/${id}`,
+        // `http://localhost:5000/api/contact/${id}`,
+        `https://ak-csm.onrender.com/api/contact/${id}`,
         config
     );
 
@@ -88,7 +91,8 @@ async ({ id, contactDetails, navigate }, { rejectWithValue, getState }) => {
 
     try {
     const { data } = await axios.put(
-        `http://localhost:5000/api/edit/${id}`,
+        // `http://localhost:5000/api/edit/${id}`,
+        `https://ak-csm.onrender.com/api/edit/${id}`,
         contactDetails,
         config
     );
@@ -115,7 +119,8 @@ async (id, { rejectWithValue, getState }) => {
     if (window.confirm("are you sure you want to delete this contact ?")) {
     try {
         const { data } = await axios.delete(
-        `http://localhost:5000/api/delete/${id}`,
+        // `http://localhost:5000/api/delete/${id}`,
+        `https://ak-csm.onrender.com/api/delete/${id}`,
         config
         );
         toast.success("Deleted Successfully");
@@ -139,7 +144,8 @@ async (id, { rejectWithValue, getState }) => {
     if (window.confirm("are you sure you want to delete all your contacts ?")) {
     try {
         const { data } = await axios.delete(
-        `http://localhost:5000/api/delete_all`,
+        // `http://localhost:5000/api/delete_all`,
+        `https://ak-csm.onrender.com/api/delete_all`,
         config
         );
         toast.success("Deleted Successfully");
