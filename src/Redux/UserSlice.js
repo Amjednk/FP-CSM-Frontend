@@ -27,8 +27,8 @@ export const login = createAsyncThunk(
 async ({ credentials, navigate, toast }, { rejectWithValue }) => {
     try {
     const { data } = await axios.post(
-        // "http://localhost:5000/api/login",
-        "https://ak-csm.onrender.com/api/login",
+        "http://localhost:5000/api/login",
+        // "https://ak-csm.onrender.com/api/login",
         credentials
     );
     localStorage.setItem("userInfos", JSON.stringify(data));
@@ -77,20 +77,16 @@ export const getAllUsers = createAsyncThunk(
 export const lockUser = createAsyncThunk(
     "/api/user/lock",
     async (id, { rejectWithValue, getState }) => {
-        const userAuth = getState()?.userAuth;
-        const { userLoggedIn } = userAuth;
-        const config = {
-        headers: { Authorization: `Bearer ${userLoggedIn?.token}` },
-        };
         if (window.confirm("do you confirm user block ?")) {
         try {
             const { data } = await axios.put(
             // `http://localhost:5000/api/user/lock/${id}`,
             `https://ak-csm.onrender.com/api/user/lock/${id}`,
-            config, 
             );
+            setTimeout(() => {
+                window.location.reload();
+            }, 1490);
             toast.success("Account locked!");
-    
             return data;
         } catch (error) {
             return rejectWithValue(error?.response?.message);
@@ -102,20 +98,16 @@ export const lockUser = createAsyncThunk(
 export const unlockUser = createAsyncThunk(
     "/api/user/unlock",
     async (id, { rejectWithValue, getState }) => {
-        const userAuth = getState()?.userAuth;
-        const { userLoggedIn } = userAuth;
-        const config = {
-        headers: { Authorization: `Bearer ${userLoggedIn?.token}` },
-        };
         if (window.confirm("do you confirm user unblock ?")) {
         try {
             const { data } = await axios.put(
             // `http://localhost:5000/api/user/unlock/${id}`,
             `https://ak-csm.onrender.com/api/user/unlock/${id}`,
-            config
             );
+            setTimeout(() => {
+                window.location.reload();
+            }, 1490);
             toast.success("Account unlocked!");
-    
             return data;
         } catch (error) {
             return rejectWithValue(error?.response?.message);
@@ -217,6 +209,7 @@ extraReducers: {
             state.loading = false;
             state.appErr = undefined;
             state.serverErr = undefined;
+            
         },
         [lockUser.rejected]: (state, action) => {
             state.loading = false;
@@ -232,6 +225,7 @@ extraReducers: {
             state.loading = false;
             state.appErr = undefined;
             state.serverErr = undefined;
+            
         },
         [unlockUser.rejected]: (state, action) => {
             state.loading = false;
