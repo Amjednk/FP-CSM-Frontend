@@ -103,10 +103,10 @@ return (
         />
         </div>
         <Button title="Save" type="submit" variant="info" className="my-2">
-        <MdSaveAs size={20} />
+            <MdSaveAs size={20} />
         </Button>
         <Link title="Cancel" className="btn btn-secondary mx-2" to={"/"}>
-        <FcCancel size={20} />
+            <FcCancel size={20} />
         </Link>
     </form>
     </>

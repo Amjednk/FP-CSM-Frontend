@@ -15,7 +15,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Layout>
-        <ToastContainer />
+        <ToastContainer autoClose="750" />
         <Switch>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
