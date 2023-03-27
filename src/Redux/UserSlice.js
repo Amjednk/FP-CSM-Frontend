@@ -27,8 +27,8 @@ export const login = createAsyncThunk(
 async ({ credentials, navigate, toast }, { rejectWithValue }) => {
     try {
     const { data } = await axios.post(
-        "http://localhost:5000/api/login",
-        // "https://ak-csm.onrender.com/api/login",
+        // "http://localhost:5000/api/login",
+        "https://ak-csm.onrender.com/api/login",
         credentials
     );
     localStorage.setItem("userInfos", JSON.stringify(data));
