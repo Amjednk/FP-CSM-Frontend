@@ -68,8 +68,8 @@ async (id, { rejectWithValue, getState, dispatch }) => {
 
     try {
     const { data } = await axios.get(
-        // `http://localhost:5000/api/SingleContact/${id}`,
-        `https://ak-csm.onrender.com/api/SingleContact/${id}`,
+        // `http://localhost:5000/api/contact/${id}`,
+        `https://ak-csm.onrender.com/api/contact/${id}`,
         config
     );
 
